@@ -31,7 +31,19 @@ sumDigits (x:zs) = (x `div` 10) + (x `mod` 10 ) + sumDigits zs
 validate :: Integer -> Bool
 validate x = mod (sumDigits (doubleEveryOther (toDigitsRev x))) 10 == 0
 
+-- Exercise 5
+-- The Towers of Hanoi
+type Peg = String
+type Move = (Peg, Peg)
+hanoi :: Integer -> Peg -> Peg -> Peg -> [Move]
+hanoi 0 _ _ _ = []
+hanoi disks a b c = hanoi (disks - 1) a c b
+                 ++ [(a, b)]
+                 ++ hanoi (disks - 1) c b a
+
 -- Main section
 main = do
     print (validate 4012888888881881)
     print (validate 4012888888881882)
+    
+    print (hanoi 3 "a" "b" "c")
