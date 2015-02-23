@@ -41,9 +41,14 @@ hanoi disks a b c = hanoi (disks - 1) a c b
                  ++ [(a, b)]
                  ++ hanoi (disks - 1) c b a
 
+-- Exercise 6 (Optional)
+-- Not executed.
+
 -- Main section
 main = do
     print (validate 4012888888881881)
     print (validate 4012888888881882)
     
-    print (hanoi 3 "a" "b" "c")
+    let movements = hanoi 4 "a" "b" "c"
+    print (length movements)
+    print (movements)
